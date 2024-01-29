@@ -1,4 +1,5 @@
 import cc from './CompContent.module.css';
+import MyPosts from './MyPosts/MyPosts';
 const Profile = () => {
 	return(
 <div className={cc.profile}>

@@ -1,0 +1,32 @@
+.but{
+height: 36.808px;
+width: 100px;
+padding: 6.692px 13.385px;
+justify-content: center;
+align-items: center;
+border-radius: 8.365px;
+background: #141416;
+color: #FFF;
+font-family: Poppins;
+font-size: 10.038px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 15.058px */
+letter-spacing: 0.084px;
+}
+.but:hover{
+background-color: rgb(110, 107, 107);
+}
+.textarea{
+	width: 328px;
+	height: 30px;
+	padding: 16px;
+	align-items: center;
+	gap: 12px;
+	align-self: stretch;
+	border-radius: 8px;
+border: 1px solid #05F;
+
+background: #F9F9F9;
+
+}
