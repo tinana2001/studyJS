@@ -1,0 +1,27 @@
+.content{
+	grid-area: ct;
+	background-color: lightskyblue;
+ }
+ .content img{
+	width: 100%;
+	max-height: 300px;
+ }
+ .ava img{
+	margin-left: 15px;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+ }
+ .profile{
+	display: flex;
+ }
+ .name{
+	font-size: 25px;
+	font-weight: 600px;
+ }
+ .information{
+	font-size: 16px;
+ }
+ .inform{
+	padding-left: 20px;
+ }
