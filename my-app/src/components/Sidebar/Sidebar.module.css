@@ -2,5 +2,14 @@
 	grid-area: sb;
 	background-color: antiquewhite;
 	text-align: center;
+	padding: 20px;
  }
- 
+ .item a{
+	color:black;
+	font-weight: 500;
+	text-decoration: none;
+ }
+ .item a:focus{
+	color: rgb(4, 4, 70);
+	border: 1px solid #949292;
+ }
