@@ -6,7 +6,8 @@ import CompContent from './components/compContent/compContent';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 
-const App = () => {
+const App = (props) => {
+
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -14,8 +15,8 @@ const App = () => {
         <SideBar />
         <div className="app-wrapper-content">
         <Routes>
-          <Route path="/CompContent" element={<CompContent/>}/>
-          <Route path="/Dialogs/*" element={<Dialogs/>}/>
+          <Route path="/CompContent" element={<CompContent posts={props.posts}/>}/>
+          <Route path="/Dialogs/*" element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
         </Routes>
         </div>
       </div>

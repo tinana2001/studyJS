@@ -4,13 +4,14 @@ import React from 'react';
 import cc from './CompContent.module.css';
 import MyPosts from "./MyPosts/MyPosts";
 
-const CompContent = () => {
+const CompContent = (props) => {
+
 	return(
 		
 		<div className={cc.content}>
 			<Fone/>
 			<Profile/>
-			<MyPosts />
+			<MyPosts posts={props.posts}/>
 	 </div>
 	);
 	
