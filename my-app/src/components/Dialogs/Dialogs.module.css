@@ -1,13 +1,11 @@
 .dialogs{
 	padding: 10px 0px 0px 20px;
 	display: grid;
-	grid-template-columns: 2fr 5fr;
+	grid-template-columns: 2fr 6fr;
  }
  .messages{
-
- }
- .message{
-
+border: 2px solid #95f0eb;
+margin: 0px 20px 20px 0px;
  }
  .dialog a{
 	color: black;
@@ -16,4 +14,29 @@
  .dialog a:focus{
 	color: deeppink;
 	font-weight: 500;
+ }
+ .textMessage{
+	width: 400px;
+	height: 75px;
+	resize: none;
+ }
+ .button{
+	margin-top: 10px;
+	height: 36.808px;
+width: 100px;
+padding: 6.692px 13.385px;
+justify-content: center;
+align-items: center;
+border-radius: 8.365px;
+background: #141416;
+color: #FFF;
+font-family: Poppins;
+font-size: 10.038px;
+font-style: normal;
+font-weight: 600;
+line-height: 150%; /* 15.058px */
+letter-spacing: 0.084px;
+ }
+ .formForMessage{
+	margin: 50px 0px 10px 10px;
  }

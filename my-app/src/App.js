@@ -15,8 +15,8 @@ const App = (props) => {
         <SideBar />
         <div className="app-wrapper-content">
         <Routes>
-          <Route path="/CompContent" element={<CompContent posts={props.posts}/>}/>
-          <Route path="/Dialogs/*" element={<Dialogs dialogs={props.dialogs} messages={props.messages}/>}/>
+          <Route path="/CompContent" element={<CompContent state={props.state.profilePage}/>}/>
+          <Route path="/Dialogs/*" element={<Dialogs state={props.state.messagesPage}/>}/>
         </Routes>
         </div>
       </div>

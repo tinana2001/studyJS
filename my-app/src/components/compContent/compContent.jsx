@@ -7,11 +7,11 @@ import MyPosts from "./MyPosts/MyPosts";
 const CompContent = (props) => {
 
 	return(
-		
+	
 		<div className={cc.content}>
 			<Fone/>
 			<Profile/>
-			<MyPosts posts={props.posts}/>
+			<MyPosts posts={props.state.posts}/>
 	 </div>
 	);
 	
