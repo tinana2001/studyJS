@@ -5,6 +5,7 @@ import SideBar from './components/Sidebar/Sidebar';
 import CompContent from './components/compContent/compContent';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
+import { addPost } from './redux/state';
 
 const App = (props) => {
 
@@ -15,7 +16,7 @@ const App = (props) => {
         <SideBar />
         <div className="app-wrapper-content">
         <Routes>
-          <Route path="/CompContent" element={<CompContent state={props.state.profilePage}/>}/>
+          <Route path="/CompContent" element={<CompContent profilePage={props.state.profilePage} addPost={props.addPost} newPostText={props.newPostText} updateNewPostChange={props.updateNewPostChange}/>}/>
           <Route path="/Dialogs/*" element={<Dialogs state={props.state.messagesPage}/>}/>
         </Routes>
         </div>

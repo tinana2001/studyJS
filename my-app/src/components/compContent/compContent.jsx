@@ -11,7 +11,7 @@ const CompContent = (props) => {
 		<div className={cc.content}>
 			<Fone/>
 			<Profile/>
-			<MyPosts posts={props.state.posts}/>
+			<MyPosts posts={props.profilePage.posts} addPost={props.addPost} newPostText={props.profilePage.newPostText} updateNewPostChange={props.updateNewPostChange}/>
 	 </div>
 	);
 	
