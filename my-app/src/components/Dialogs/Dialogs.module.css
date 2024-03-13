@@ -1,7 +1,7 @@
 .dialogs{
 	padding: 10px 0px 0px 20px;
 	display: grid;
-	grid-template-columns: 2fr 6fr;
+	grid-template-columns: 1fr 8fr;
  }
  .messages{
 border: 2px solid #95f0eb;
