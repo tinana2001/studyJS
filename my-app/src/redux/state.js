@@ -1,5 +1,8 @@
-const ADD_POST='ADD-POST';
-const UPDATE_NEW_POST_TEXT='UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'SEND-MESSAGE'
+
 let store = {
 	_state: {
 		profilePage: {
@@ -21,23 +24,24 @@ let store = {
 				{ id: 1, message: 'Мяу' },
 				{ id: 2, message: 'Жду тебя на кухне' },
 				{ id: 3, message: 'Как твои дела?' }
-			]
+			],
+			newMessageText: '',
 		}
 
 	},
 	_callSubscriber() {
 		console.log('state changed');
 	},
-	getState(){
+	getState() {
 		return this._state;
 	},
-	
+
 	subscribe(observer) {
 		this._callSubscriber = observer;
 	},
 	dispatch(action) { //type:'ADD-POST'
-		
-		  if(action.type === 'ADD-POST' ){
+
+		if (action.type === 'ADD-POST') {
 			let newPost = {
 				id: 5,
 				message: this._state.profilePage.newPostText,
@@ -46,13 +50,26 @@ let store = {
 			this._state.profilePage.posts.push(newPost);
 			this._state.profilePage.newPostText = '';
 			this._callSubscriber(this._state);
-		  }
-		  else if (action.type === 'UPDATE-NEW-POST-TEXT'){
+		}
+		else if (action.type === 'UPDATE-NEW-POST-TEXT') {
 			this._state.profilePage.newPostText = action.newText;
-		this._callSubscriber(this._state);
-		  }
+			this._callSubscriber(this._state);
+		}
+		else if (action.type === 'UPDATE-NEW-MESSAGE-BODY') {
+			this._state.messagesPage.newMessageText = action.body;
+			this._callSubscriber(this._state);
+		}
+		else if (action.type === 'SEND-MESSAGE') {
+			let newBody = {
+				id: 5,
+				message: this._state.messagesPage.newMessageText,
+			}
+			this._state.messagesPage.messages.push(newBody);
+			this._state.messagesPage.newMessageText = '';
+			this._callSubscriber(this._state);
+		}
 	}
-	
+
 }
 export const addPostActionCreator = ()=>{
 	return {type: ADD_POST}
@@ -60,5 +77,10 @@ export const addPostActionCreator = ()=>{
 export const updateNewPostTextCreator=(text)=>{
 	return{type:UPDATE_NEW_POST_TEXT, newText:text}
 }
-
+export const updateNewMessageBodyCreator = (messageText)=>{
+	return{type:UPDATE_NEW_MESSAGE_BODY, body:messageText}
+}
+export const sendMessageCreator = ()=>{
+	return {type: SEND_MESSAGE}
+}
 export default store;
