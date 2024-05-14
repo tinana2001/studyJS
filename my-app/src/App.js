@@ -5,7 +5,7 @@ import SideBar from './components/Sidebar/Sidebar';
 import CompContent from './components/compContent/compContent';
 import Dialogs from './components/Dialogs/Dialogs';
 import {BrowserRouter, Routes, Route } from "react-router-dom";
-import { addPost} from './redux/state';
+import { addPost} from './redux/store';
 
 const App = (props) => {
 
