@@ -17,9 +17,10 @@ const App = (props) => {
         <SideBar />
         <div className="app-wrapper-content">
         <Routes>
-          <Route path="/CompContent" element={<CompContent store = {props.store}  />}/>
-          {/* потом тут не забыть написать вместо всего store = {props.store} */}
-          <Route path="/Dialogs/*" element={<DialogsContainer store={props.store}/>}/> 
+          {/* <Route path="/CompContent" element={<CompContent store = {props.store}  />}/>
+          <Route path="/Dialogs/*" element={<DialogsContainer store={props.store}/>}/>  */}
+            <Route path="/CompContent" element={<CompContent />}/>
+          <Route path="/Dialogs/*" element={<DialogsContainer/>}/> 
         </Routes>
         </div>
       </div>

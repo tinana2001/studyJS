@@ -2,7 +2,7 @@ import Fone from "./Fone";
 import Profile from "./Profile";
 import React from 'react';
 import cc from './CompContent.module.css';
-import MyPosts from "./MyPosts/MyPosts";
+// import MyPosts from "./MyPosts/MyPosts";
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const CompContent = (props) => {
@@ -12,7 +12,8 @@ const CompContent = (props) => {
 		<div className={cc.content}>
 			<Fone/>
 			<Profile/>
-			<MyPostsContainer store={props.store}/>
+			{/* <MyPostsContainer store={props.store}/> */}
+			<MyPostsContainer/>
 	 </div>
 	);
 	
