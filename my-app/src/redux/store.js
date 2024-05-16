@@ -38,8 +38,6 @@ let store = {
 		this._callSubscriber = observer;
 	},
 	dispatch(action) { //type:'ADD-POST'
-
-
 		this._state.profilePage = profileReducer(this._state.profilePage, action);
 		this._state.messagesPage = dialogReducer(this._state.messagesPage, action);
 		this._state.sideBarPage = sidebarReducer(this._state.sideBarPage, action);

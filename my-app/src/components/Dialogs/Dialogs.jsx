@@ -7,15 +7,21 @@ import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dia
 
 
 const Dialogs = (props) => {
-	let dialogsElem = props.state.dialogs.map((dd) => <DialogItem name={dd.name} id={dd.id} />)
-	let messageElem = props.state.messages.map((mm) => <Message message={mm.message} />)
+	let state = props.messagesPage;
+	let dialogsElem = state.dialogs.map((dd) => <DialogItem name={dd.name} id={dd.id} />)
+	let messageElem = state.messages.map((mm) => <Message message={mm.message} />)
+	let newMessageText = state.newMessageText;
 	let newMessageElement = React.createRef();
 	let newMessageClick = () => {
-		props.dispatch(sendMessageCreator());
+		props.sendMessage();
 	}
-	let onNewMessageChange=()=>{
-		let text = newMessageElement.current.value;
-		props.dispatch(updateNewMessageBodyCreator(text));
+	let onNewMessageChange=(e)=>{
+		//  let body = newMessageElement.current.value;
+		// // props.dispatch(updateNewMessageBodyCreator(body));
+		// props.updateNewMessageBody(body);
+		let body = e.target.value;
+		// props.dispatch(updateNewMessageBodyCreator(body));
+		props.updateNewMessageBody(body);
 	}
 	return (
 		<div className={d.message}>
@@ -26,7 +32,7 @@ const Dialogs = (props) => {
 				<div className={d.messages}>
 					{messageElem}
 					<div className={d.formForMessage}>
-				<textarea className={d.textMessage} ref={newMessageElement} onChange={onNewMessageChange} value={props.state.newMessageText} ></textarea>
+				<textarea className={d.textMessage} ref={newMessageElement} onChange={onNewMessageChange} textarea value={newMessageText} ></textarea> 
 				<div><button className={d.button} onClick={newMessageClick}>Отправить</button></div>
 			</div>
 				</div>
