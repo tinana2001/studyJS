@@ -6,7 +6,7 @@ import store from './redux/redux-store';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { Provider } from './StoreContext';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 let renderEntireTree = (state) =>{
@@ -23,7 +23,7 @@ let renderEntireTree = (state) =>{
 reportWebVitals();
 
 renderEntireTree(store.getState());
-store.subscribe(renderEntireTree);
+// store.subscribe(renderEntireTree);
 //store.subscribe(()=>{
   //let state = store.getState();
  // renderEntireTree(state);

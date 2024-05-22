@@ -35,4 +35,6 @@ debugger
 		</div>
 	)
 }
+
+
 export default MyPosts;

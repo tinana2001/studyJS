@@ -9,7 +9,6 @@ import { addPost} from './redux/store';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 
 const App = (props) => {
-
   return (
     <BrowserRouter>
       <div className="app-wrapper">
