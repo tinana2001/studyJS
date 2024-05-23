@@ -7,7 +7,6 @@ import Post from './Post/Post';
 
 
 const MyPosts = (props) => {
-debugger
 	let onAddPost = () => {
 		props.newPost();
 		//let text=newPostElement.current.value;
