@@ -11,6 +11,9 @@ const SideBar = () => {
 		<NavLink to='/Dialogs'>Message</NavLink>
 		</div>
 		<div className={sb.item}>
+		<NavLink to ='/Users'>Users</NavLink>
+		</div>
+		<div className={sb.item}>
 		<NavLink>News</NavLink>
 		</div>
 		<div className={sb.item}>
@@ -19,6 +22,7 @@ const SideBar = () => {
 		<div className={sb.item}>
 		<NavLink>Settings</NavLink>
 		</div>
+
 	 </div>
 	);
 	
