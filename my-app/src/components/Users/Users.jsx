@@ -1,13 +1,13 @@
 import React from 'react';
+import  axios from 'axios';
 import styles from './Users.module.css'
+import userPhoto from '../../assets/imeges/cat-siluet.png'
 const Users = (props) => {
-	// props.setUsers(
-	// 	[
-	// 	{ id: 1, photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: true, fullName: 'Мистер кот', status: 'Если ты волк, то ты не кот', location: {city: 'Уфа', country:'Россия'} },
-	// 	{ id: 2,photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: true, fullName: 'Котофей', status: 'Быть котом восхитительно ', location: {city: 'Казань', country:'Россия'}},
-	// 	{ id: 3,photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: false, fullName: 'Кот Тимофеевич', status: 'Мяу' , location: {city: 'Хошимин', country:'Вьетнам'}}
-	// 	]
-	// )
+	if (props.users.length === 0){
+		axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response =>{
+		props.setUsers(response.data.items);
+		});
+	}
 	return (
 		<div>
 			{
@@ -15,7 +15,7 @@ const Users = (props) => {
 					<div className={styles.usersBlock}>
 						<div>
 							<div className={styles.photo}>
-								<img src={u.photoUrl} />
+								<img src={u.photos.small !=null ? u.pgotos.small :userPhoto } />
 							</div>
 							<div>
 								{u.followed ? 
@@ -25,12 +25,12 @@ const Users = (props) => {
 						</div>
 						<div className={styles.nameAndLocation}>
 							<div>
-								<div className={styles.fullName}>{u.fullName}</div>
+								<div className={styles.fullName}>{u.name}</div>
 								<div className={styles.status}>{u.status}</div>
 							</div>
 							<div className={styles.location}>
-								<div>{u.location.country}</div>
-								<div>{u.location.city}</div>
+								<div>{'u.location.country'}</div>
+								<div>{'u.location.city'}</div>
 							</div>
 						</div>
 					</div>
