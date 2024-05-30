@@ -53,23 +53,7 @@
 	.but:hover{
 	background-color: rgb(110, 107, 107);
 	}
-	.btnUsers{
-		position: relative;
-		left: 50%;
-		transform: translate(-50%, 0);
-		margin-top: 20px;
-	height: 36.808px;
-	width: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 8.365px;
-	background: #141416;
-	color: #FFF;
-	font-family: Poppins;
-	font-size: 10.038px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 150%; /* 15.058px */
-	letter-spacing: 0.084px;
+	.selectedPage{
+		font-weight: 700;
+		background-color: lightpink;
 	}

@@ -2,12 +2,18 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE='SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT='SET-TOTAL-USERS-COUNT';
+
 let initialState={
 	users: [
 		// { id: 1, photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: true, fullName: 'Мистер кот', status: 'Если ты волк, то ты не кот', location: {city: 'Уфа', country:'Россия'} },
 		// { id: 2,photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: true, fullName: 'Котофей', status: 'Быть котом восхитительно ', location: {city: 'Казань', country:'Россия'}},
 		// { id: 3,photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: false, fullName: 'Кот Тимофеевич', status: 'Мяу' , location: {city: 'Хошимин', country:'Вьетнам'}}
 	],
+	pageSize:5,
+	totalUsersCount: 0,
+	currentPage:1,
 }
 const usersReducer =(state=initialState, action)=>{
 	switch (action.type){
@@ -36,9 +42,16 @@ const usersReducer =(state=initialState, action)=>{
 			)
 		}
 		case SET_USERS:
+			return { ...state, users: action.users }
+			case SET_CURRENT_PAGE:
 			return{
 				...state,
-				users: action.users //берем из state наших юзеров и добавляем новых юзеров из action. По факту склеиваю два массива 
+				currentPage: action.currentPage,
+			}
+			case SET_TOTAL_USERS_COUNT:
+			return{
+				...state,
+				totalUsersCount: action.count,
 			}
 	default:
 		return state;
@@ -55,6 +68,12 @@ export const unfollowActionCreator = (userId)=>{
 export const setUsersActionCreator=(users)=>{
 	return{type:SET_USERS, users}
 }
+export const setCurrentPageActionCreator=(currentPage)=>{
+	return{type:SET_CURRENT_PAGE, currentPage}
+}
 
+export const setTotalCountActionCreator=(totalUsersCount)=>{
+	return{type:SET_TOTAL_USERS_COUNT, count:totalUsersCount}
+}
 
 export default usersReducer;
