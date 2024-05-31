@@ -1,34 +1,44 @@
 //будет снабжать нашу презентационную компаненту Users пропсами. 
 import React from 'react';
 import { connect } from 'react-redux';
-import { followActionCreator, setCurrentPageActionCreator, setUsersActionCreator, setUsersTotalCountActionCreator, unfollowActionCreator } from '../../redux/users-reducer';
+import { followActionCreator, setCurrentPageActionCreator, setIsFetchingActionCreator, setUsersActionCreator, setUsersTotalCountActionCreator, unfollowActionCreator } from '../../redux/users-reducer';
 import  axios from 'axios';
 import Users from './Users';
+import Preloader from '../common/preloader/Preloader';
 
 class UsersComponent extends React.Component{
 
 	componentDidMount(){
+
+		this.props.setIsFetching(true);
+
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=$(this.props.pageSize`).then(response =>{
 			this.props.setUsers(response.data.items);
 			this.props.setTotalUsersCount(response.data.totalCount);
+			this.props.setIsFetching(false);
 			});
 	}
 	onPageChanged = (pageNumber) => {
 		this.props.setCurrentPage(pageNumber);
+		this.props.setIsFetching(true);
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
 			 .then(response => {
 				  this.props.setUsers(response.data.items);
+				  this.props.setIsFetching(false);
 			 });
 	}
 		
 		render(){
-			return <Users totalUsersCount={this.props.totalUsersCount}
+			return <>
+			{this.props.isFetching? <Preloader/> :null}
+			<Users totalUsersCount={this.props.totalUsersCount}
 								pageSize={this.props.pageSize}
 								currentPage={this.props.currentPage}
 								onPageChanged={this.onPageChanged}
 								users={this.props.users}
 								follow={this.props.follow}
 								unfollow={this.props.unfollow}/>
+			</>
 		}
 	}
 
@@ -38,7 +48,8 @@ let mapStateToProps = (state) => {
 		users: state.usersPage.users, //в пропсах теперь будет сидеть свойство users, значением которого будут пользователи из state
 		pageSize: state.usersPage.pageSize,
 		totalUsersCount: state.usersPage.totalUsersCount,
-		currentPage: state.usersPage.currentPage
+		currentPage: state.usersPage.currentPage,
+		isFetching:state.usersPage.isFetching,
 	}
 }
 //служит для того, чтобы передавать дочерней презентационной компоненте callback'и
@@ -59,6 +70,9 @@ let mapDispatchToProps=(dispatch)=>{
 		},
 		setTotalUsersCount: (totalCount) =>{
 			dispatch(setUsersTotalCountActionCreator(totalCount))
+		},
+		setIsFetching: (isFetching) =>{
+			dispatch(setIsFetchingActionCreator(isFetching))
 		}
 	}
 }
