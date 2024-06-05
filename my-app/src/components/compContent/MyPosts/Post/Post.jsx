@@ -7,10 +7,9 @@ const Post = (props) => {
 		return <Preloader />
 	}
 	return (
-		
 		<div className={p.item}>
 			
-			<img src={props.profile.photos.large}/>
+			<img src={props.profile.photos.small}/>
 			{/* <img src="https://catherineasquithgallery.com/uploads/posts/2021-03/1614576613_6-p-chernie-silueti-na-belom-fone-6.png" alt="" /> */}
 				{props.message}
 			<div>

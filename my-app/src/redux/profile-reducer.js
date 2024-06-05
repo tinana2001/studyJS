@@ -3,7 +3,7 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 let initialState={
 	posts: [
-		{ id: 1, message: 'Сегодня стащил со стола креветки. Доволен', likecount: 5 },
+		{ id: 1, message: 'Почти самурай', likecount: 5 },
 		{ id: 2, message: 'Всем привет! Теперь и я тут!', likecount: 2 },
 		{ id: 3, message: 'Добавляйтесь в друзья', likecount: 1 }
 	],

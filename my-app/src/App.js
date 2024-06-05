@@ -6,12 +6,13 @@ import {BrowserRouter, Routes, Route } from "react-router-dom";
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import CompContentContainer from './components/compContent/compContentContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 
 const App = (props) => {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
-        <Header />
+        <HeaderContainer />
         <SideBar />
         <div className="app-wrapper-content">
         <Routes>
