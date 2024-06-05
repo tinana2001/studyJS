@@ -9,8 +9,8 @@
  .ava img{
 	margin-left: 15px;
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	width: 200px;
+	height: 200px;
  }
  .profile{
 	display: flex;
@@ -25,4 +25,13 @@
  }
  .inform{
 	padding-left: 20px;
+ }
+ .contacts{
+	font-weight: 600;
+	color: purple;
+	margin-left: 35px;
+
+ }
+ .userInfo{
+	display: flex;
  }

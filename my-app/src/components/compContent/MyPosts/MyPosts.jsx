@@ -18,7 +18,7 @@ const MyPosts = (props) => {
 	props.updateNewPostText(text);
 	}
 	let newPostElement = React.createRef();
-	let postsElem = props.posts.map((p) => <Post message={p.message} likecount={p.likecount} />)
+	let postsElem = props.posts.map((p) => <Post message={p.message} likecount={p.likecount} profile={props.profile}/>)
 	return (
 		<div className={p.postsContainer}>
 			<h3>My posts</h3>

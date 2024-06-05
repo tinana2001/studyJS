@@ -6,14 +6,12 @@ import cc from './CompContent.module.css';
 import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 const CompContent = (props) => {
-	
 	return(
-	
 		<div className={cc.content}>
 			<Fone/>
-			<Profile/>
+			<Profile profile={props.profile}/>
 			{/* <MyPostsContainer store={props.store}/> */}
-			<MyPostsContainer/>
+			<MyPostsContainer profile={props.profile}/>
 	 </div>
 	);
 	

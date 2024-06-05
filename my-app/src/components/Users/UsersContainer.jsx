@@ -1,7 +1,7 @@
 //будет снабжать нашу презентационную компаненту Users пропсами. 
 import React from 'react';
 import { connect } from 'react-redux';
-import { followActionCreator, setCurrentPageActionCreator, setIsFetchingActionCreator, setUsersActionCreator, setUsersTotalCountActionCreator, unfollowActionCreator } from '../../redux/users-reducer';
+import { follow, setCurrentPage, setIsFetching, setUsers, setUsersTotalCount, unfollow} from '../../redux/users-reducer';
 import  axios from 'axios';
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader';
@@ -14,7 +14,7 @@ class UsersComponent extends React.Component{
 
 		axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=$(this.props.pageSize`).then(response =>{
 			this.props.setUsers(response.data.items);
-			this.props.setTotalUsersCount(response.data.totalCount);
+			this.props.setUsersTotalCount(response.data.totalCount);
 			this.props.setIsFetching(false);
 			});
 	}
@@ -53,27 +53,37 @@ let mapStateToProps = (state) => {
 	}
 }
 //служит для того, чтобы передавать дочерней презентационной компоненте callback'и
-let mapDispatchToProps=(dispatch)=>{
-	return{
-		//ф-я, которая будет диспатчить actionCreator
-		follow:(userId)=>{
-			dispatch(followActionCreator(userId));
-		},
-		unfollow:(userId)=>{
-			dispatch(unfollowActionCreator(userId));
-		},
-		setUsers:(users)=>{
-			dispatch(setUsersActionCreator(users))
-		},
-		setCurrentPage: (pageNumber) =>{
-			dispatch(setCurrentPageActionCreator(pageNumber))
-		},
-		setTotalUsersCount: (totalCount) =>{
-			dispatch(setUsersTotalCountActionCreator(totalCount))
-		},
-		setIsFetching: (isFetching) =>{
-			dispatch(setIsFetchingActionCreator(isFetching))
-		}
-	}
-}
-export default connect(mapStateToProps, mapDispatchToProps)(UsersComponent);
+// let mapDispatchToProps=(dispatch)=>{
+// 	return{
+// 		//ф-я, которая будет диспатчить actionCreator
+// 		follow:(userId)=>{
+// 			dispatch(followActionCreator(userId));
+// 		},
+// 		unfollow:(userId)=>{
+// 			dispatch(unfollowActionCreator(userId));
+// 		},
+// 		setUsers:(users)=>{
+// 			dispatch(setUsersActionCreator(users))
+// 		},
+// 		setCurrentPage: (pageNumber) =>{
+// 			dispatch(setCurrentPageActionCreator(pageNumber))
+// 		},
+// 		setTotalUsersCount: (totalCount) =>{
+// 			dispatch(setUsersTotalCountActionCreator(totalCount))
+// 		},
+// 		setIsFetching: (isFetching) =>{
+// 			dispatch(setIsFetchingActionCreator(isFetching))
+// 		}
+// 	}
+// }
+
+
+
+export default connect(mapStateToProps, {
+	follow:follow,
+	unfollow,
+	setUsers,
+	setCurrentPage,
+	setUsersTotalCount,
+	setIsFetching
+})(UsersComponent);

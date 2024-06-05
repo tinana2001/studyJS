@@ -1,10 +1,17 @@
 import React from 'react';
 import p from './Post.module.css';
-const Post = (props) => {
+import Preloader from '../../../common/preloader/Preloader';
 
+const Post = (props) => {
+	if (!props.profile) {
+		return <Preloader />
+	}
 	return (
+		
 		<div className={p.item}>
-			<img src='https://mykaleidoscope.ru/x/uploads/posts/2022-09/1663117723_20-mykaleidoscope-ru-p-kotiki-veselie-pinterest-20.jpg'></img>
+			
+			<img src={props.profile.photos.large}/>
+			{/* <img src="https://catherineasquithgallery.com/uploads/posts/2021-03/1614576613_6-p-chernie-silueti-na-belom-fone-6.png" alt="" /> */}
 				{props.message}
 			<div>
 				<span> лайки {props.likecount}</span>
