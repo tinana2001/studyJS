@@ -5,7 +5,7 @@ const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 const IS_FETCHING = 'IS-FETCHING';
-
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE-IS-FOLLOWING-PROGRESS-PROGRESS';
 let initialState = {
 	users: [
 		// { id: 1, photoUrl: 'https://w-dog.ru/wallpapers/5/15/522031677054413/kotejka-mordochka-vzglyad.jpg',followed: true, fullName: 'Мистер кот', status: 'Если ты волк, то ты не кот', location: {city: 'Уфа', country:'Россия'} },
@@ -16,6 +16,7 @@ let initialState = {
 	totalUsersCount: 0,
 	currentPage: 1,
 	isFetching:false,
+	// followingInProgress:true,
 }
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -49,11 +50,18 @@ const usersReducer = (state = initialState, action) => {
             return { ...state, currentPage: action.currentPage}
         }
         case SET_TOTAL_USERS_COUNT: {
-            return { ...state, totalUsersCount: action.count/100}
+            return { ...state, totalUsersCount: action.count/50}
         }
 		  case IS_FETCHING:{
 			return {...state, isFetching: action.isFetching}
 		  }
+	// 	  case TOGGLE_IS_FOLLOWING_PROGRESS: {
+	// 		return {
+	// 			 ...state,
+	// 			 followingInProgress: action.isFetching
+	// 		}
+	//   }
+
 		default:
 			return state;
 	}
@@ -75,5 +83,6 @@ export const setCurrentPage = (currentPage) => {
 export const setIsFetching = (isFetching) => {
 	return { type: IS_FETCHING, isFetching }
 }
+// 
 export const setUsersTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, count: totalUsersCount })
 export default usersReducer;
