@@ -1,7 +1,7 @@
 //будет снабжать нашу презентационную компаненту Users пропсами. 
 import React from 'react';
 import { connect } from 'react-redux';
-import { follow, setCurrentPage, setIsFetching, setUsers, setUsersTotalCount, toggleFollowingProgress, unfollow} from '../../redux/users-reducer';
+import { follow, getUsers, setCurrentPage, toggleFollowingProgress, unfollow} from '../../redux/users-reducer';
 import Users from './Users';
 import Preloader from '../common/preloader/Preloader';
 import {usersAPI } from '../../api/api';
@@ -9,22 +9,17 @@ import {usersAPI } from '../../api/api';
 class UsersComponent extends React.Component{
 
 	componentDidMount(){
-		this.props.setIsFetching(true);
-		usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-		.then(data =>{
-			this.props.setUsers(data.items);
-			this.props.setUsersTotalCount(data.totalCount);
-			this.props.setIsFetching(false);
-			});
+		this.props.getUsers(this.props.currentPage, this.props.pageSize);
 	}
 	onPageChanged = (pageNumber) => {
-		this.props.setCurrentPage(pageNumber);
-		this.props.setIsFetching(true);
-		usersAPI.getUsers(pageNumber, this.props.pageSize)
-		.then(data => {
-				  this.props.setUsers(data.items);
-				  this.props.setIsFetching(false);
-			 });
+		this.props.getUsers(pageNumber, this.props.pageSize);
+		// this.props.setCurrentPage(pageNumber);
+		// this.props.setIsFetching(true);
+		// usersAPI.getUsers(pageNumber, this.props.pageSize)
+		// .then(data => {
+		// 		  this.props.setUsers(data.items);
+		// 		  this.props.setIsFetching(false);
+		// 	 });
 	}
 		
 		render(){
@@ -37,8 +32,7 @@ class UsersComponent extends React.Component{
 								users={this.props.users}
 								follow={this.props.follow}
 								unfollow={this.props.unfollow}
-								// toggleFollowingProgress={this.props.toggleFollowingProgress}
-                        // followingInProgress={this.props.followingInProgress}
+                        followingInProgress={this.props.followingInProgress}
 								/>
 			</>
 		}
@@ -52,7 +46,7 @@ let mapStateToProps = (state) => {
 		totalUsersCount: state.usersPage.totalUsersCount,
 		currentPage: state.usersPage.currentPage,
 		isFetching:state.usersPage.isFetching,
-		// followingInProgress: state.usersPage.followingInProgress
+		followingInProgress: state.usersPage.followingInProgress,
 	}
 }
 //служит для того, чтобы передавать дочерней презентационной компоненте callback'и
@@ -85,9 +79,7 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
 	follow:follow,
 	unfollow,
-	setUsers,
 	setCurrentPage,
-	setUsersTotalCount,
-	setIsFetching,
-	// toggleFollowingProgress,
+	toggleFollowingProgress,
+	getUsers,
 })(UsersComponent);
