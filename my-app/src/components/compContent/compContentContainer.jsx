@@ -2,10 +2,8 @@
 import React from 'react';
 import CompContent from "./compContent";
 import { connect } from "react-redux";
-import  axios from 'axios';
-import { getUserProfile, setUserProfile } from "../../redux/profile-reducer";
-import {useParams} from "react-router-dom";
-import { usersAPI } from '../../api/api';
+import { getUserProfile} from "../../redux/profile-reducer";
+import {Navigate, useParams} from "react-router-dom";
 
 export function withRouter(Children){
     return(props)=>{
@@ -25,6 +23,7 @@ class compContentContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.isAuth) return <Navigate to="/Login"/>; 
         return (
            <CompContent {...this.props} profile={this.props.profile} />
         )
@@ -33,7 +32,8 @@ class compContentContainer extends React.Component {
 
 
 let mapStateToProps = (state) => ({
-    profile: state.profilePage.profile
+    profile: state.profilePage.profile,
+    isAuth: state.auth.isAuth,
 });
 
 const WhitsUrlContainerComponent = withRouter(compContentContainer)

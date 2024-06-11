@@ -11,7 +11,8 @@ import { connect } from 'react-redux';
 //превращаем часть state в пропсы
 let mapStateToProps =(state)=>{
 return{
-	messagesPage: state.messagesPage
+	messagesPage: state.messagesPage,
+	isAuth: state.auth.isAuth
 }
 }
 //сюда будем засовывать нужные нам колбэки
