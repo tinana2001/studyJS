@@ -1,5 +1,6 @@
 import Preloader from '../common/preloader/Preloader';
 import cc from './CompContent.module.css';
+import ProfileStatus from './ProfileStatus';
 const Profile = (props) => {
 	if (!props.profile) {
 		return <Preloader />
@@ -14,19 +15,20 @@ const Profile = (props) => {
 				<div className={cc.name}>
 					<div>{props.profile.fullName}</div>
 				</div>
+				<ProfileStatus status={"hello"}/>
 				<div className={cc.userInfo}>
-				<div className={cc.information}>
-					<div>User ID: {props.profile.userId}</div>
-					<div>Описание: {props.profile.lookingForAJobDescription}</div>
-					<div>Обо мне: {props.profile.aboutMe}</div>
-					<div>Ищу ли сейчас работу:  {props.profile.lookingForAJob?<span>Да</span>:<span>Нет</span>}</div>
-				</div>
-				<div className={cc.contacts}>
-					<div>facebook: {props.profile.contacts.facebook}</div>
-					<div>vk: {props.profile.contacts.vk}</div>
-					<div>instagram: {props.profile.contacts.instagram}</div>
-					<div>github: {props.profile.contacts.github}</div>
-				</div>
+					<div className={cc.information}>
+						<div>User ID: {props.profile.userId}</div>
+						<div>Описание: {props.profile.lookingForAJobDescription}</div>
+						<div>Обо мне: {props.profile.aboutMe}</div>
+						<div>Ищу ли сейчас работу:  {props.profile.lookingForAJob ? <span>Да</span> : <span>Нет</span>}</div>
+					</div>
+					<div className={cc.contacts}>
+						<div>facebook: {props.profile.contacts.facebook}</div>
+						<div>vk: {props.profile.contacts.vk}</div>
+						<div>instagram: {props.profile.contacts.instagram}</div>
+						<div>github: {props.profile.contacts.github}</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -34,4 +36,3 @@ const Profile = (props) => {
 
 }
 export default Profile;
-	

@@ -10,7 +10,6 @@ const CompContent = (props) => {
 		<div className={cc.content}>
 			<Fone/>
 			<Profile profile={props.profile}/>
-			{/* <MyPostsContainer store={props.store}/> */}
 			<MyPostsContainer profile={props.profile}/>
 	 </div>
 	);
