@@ -9,7 +9,7 @@ const CompContent = (props) => {
 	return(
 		<div className={cc.content}>
 			<Fone/>
-			<Profile profile={props.profile}/>
+			<Profile profile={props.profile} status ={props.status} updateStatus={props.updateStatus}/>
 			<MyPostsContainer profile={props.profile}/>
 	 </div>
 	);

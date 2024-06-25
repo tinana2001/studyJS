@@ -1,6 +1,8 @@
 import Preloader from '../common/preloader/Preloader';
 import cc from './CompContent.module.css';
 import ProfileStatus from './ProfileStatus';
+
+
 const Profile = (props) => {
 	if (!props.profile) {
 		return <Preloader />
@@ -15,7 +17,7 @@ const Profile = (props) => {
 				<div className={cc.name}>
 					<div>{props.profile.fullName}</div>
 				</div>
-				<ProfileStatus status={"hello"}/>
+				<ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
 				<div className={cc.userInfo}>
 					<div className={cc.information}>
 						<div>User ID: {props.profile.userId}</div>
