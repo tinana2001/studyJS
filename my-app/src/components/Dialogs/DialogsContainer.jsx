@@ -4,7 +4,7 @@
 // import Message from './Message';
 import { compose } from 'redux';
 import { authRedirect } from '../../hoc/authRedirect';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../redux/dialogs-reducer';
+import { sendMessageCreator} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 
@@ -19,8 +19,7 @@ return{
 //сюда будем засовывать нужные нам колбэки
 let mapDispatchToProps =(dispatch)=>{
 	return{
-		sendMessage: ()=>{dispatch(sendMessageCreator());},
-		updateNewMessageBody: (body)=>{dispatch(updateNewMessageBodyCreator(body));}
+		sendMessage: (newMessageText)=>{dispatch(sendMessageCreator(newMessageText));},
 }
 }
 
