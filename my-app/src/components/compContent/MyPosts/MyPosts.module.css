@@ -25,9 +25,10 @@ background-color: rgb(110, 107, 107);
 	gap: 12px;
 	align-self: stretch;
 	border-radius: 8px;
-border: 1px solid #05F;
+/* border: 1px solid #05F; */
 
 background: #F9F9F9;
+resize: none;
 
 }
 .postsContainer{

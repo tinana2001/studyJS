@@ -1,7 +1,7 @@
 import Preloader from '../common/preloader/Preloader';
 import cc from './CompContent.module.css';
 import ProfileStatus from './ProfileStatus';
-
+import userPhoto from './../../assets/imeges/cat-siluet.png'
 
 const Profile = (props) => {
 	if (!props.profile) {
@@ -11,7 +11,7 @@ const Profile = (props) => {
 		<div className={cc.profile}>
 			<div className={cc.ava}>
 				{/* <img src="https://yt3.googleusercontent.com/W5PUOY6kOq-iZZsYGLztP8fG0s7CiCGrhC7TB_RgnrPiugdSOZVwlBaDgiGTq6rqOUepQk3O16U=s900-c-k-c0x00ffffff-no-rj"></img> */}
-				<img src={props.profile.photos.large} alt='' />
+				<img src={props.profile.photos.large!=null? props.profile.photos.large:userPhoto} alt='' />
 			</div>
 			<div className={cc.inform}>
 				<div className={cc.name}>

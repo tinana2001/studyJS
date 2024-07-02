@@ -4,9 +4,11 @@ import Post from './Post/Post';
 // import {addPostActionCreator , updateNewPostTextCreator} from '../../../redux/profile-reducer';
 
 import { Field, reduxForm } from 'redux-form';
+import { maxLengthCreator, minLengthCreator, required } from '../../../utils/validators/validators';
+import { TextArea } from '../../common/FormsControls/FormsControls';
 
-
-
+const maxLength10 = maxLengthCreator(10);
+const minLength2 =minLengthCreator(2)
 const MyPosts = (props) => {
 	let onAddPost = (values) => {
 		props.newPost(values.newPostText);
@@ -27,7 +29,7 @@ const MyPosts = (props) => {
 const AddNewPostForm=(props)=>{
 	return(
 <form onSubmit={props.handleSubmit}>
-	<Field name={"newPostText"} component={"textarea"}/>
+	<Field className={p.textarea} name={"newPostText"} component={TextArea} placeholder='Post message' validate={[required,maxLength10, minLength2]}/>
 				<div>
 					<button className={p.but} >New Post</button>
 				</div>

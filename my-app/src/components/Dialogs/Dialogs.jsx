@@ -41,7 +41,7 @@ const AddMessageForm=(props)=>{
 	return(
 		<form onSubmit={props.handleSubmit}>
 						<div className={d.formForMessage}>
-							<Field component={"textarea"} name="newMessageText" placeholder='Enter your message'/>
+							<Field className={d.textMessage} component={"textarea"} name="newMessageText" placeholder='Enter your message'/>
 							{/* <textarea className={d.textMessage} ref={newMessageElement} onChange={onNewMessageChange} textarea value={newMessageText} ></textarea> */}
 							<div><button className={d.button}>Отправить</button></div>
 						</div>
