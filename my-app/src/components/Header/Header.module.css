@@ -30,3 +30,19 @@
 	color: black;
 	text-decoration: none;
  }
+ .but{
+	height: 36.808px;
+	width: 100px;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	border-radius: 10px;
+	background: #141416;
+	color: #FFF;
+	font-family: Poppins;
+	font-size: 10.038px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 150%; /* 15.058px */
+	letter-spacing: 0.084px;
+	}
