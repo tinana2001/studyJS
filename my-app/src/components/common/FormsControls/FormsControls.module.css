@@ -8,3 +8,9 @@
 {
     color: red;
 }
+.formSummaryError{
+    font-size: larger;
+    font-weight: 600;
+    padding: 5px;
+    color: #ff00008a;
+}
